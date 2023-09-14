@@ -31,6 +31,14 @@ class DLinkedList {
 
         Node newNode = new Node(data);
         Node temp = head;
+
+        if (pos == 1) {
+            newNode.next = head;
+            head.pre = newNode;
+            head = newNode;
+            return;
+        }
+
         int count = 1;
         while (count < pos - 1 && temp != null) {
             temp = temp.next;

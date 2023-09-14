@@ -67,7 +67,7 @@ public class QueueImplementation {
         Scanner sc = new Scanner(System.in);
         QueueImp q1 = new QueueImp();
         while (true) {
-            System.out.println("Enter Option\n1.Enque  2.Dequeue  3.Display  4.Reverse  5.IsEmpty");
+            System.out.println("Enter Option\n1.Enque  2.Dequeue  3.Display  4.Reverse  5.IsEmpty  6.peek");
             System.out.print("Input : ");
             int a = sc.nextInt();
             switch (a) {
