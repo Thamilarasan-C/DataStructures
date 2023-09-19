@@ -69,6 +69,7 @@ class SLinkedList {
             head = newNode;
             return;
         }
+
         int count = 1;
         while (count < position - 1 && temp != null) {
             temp = temp.next;

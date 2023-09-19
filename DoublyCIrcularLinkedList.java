@@ -64,7 +64,6 @@ class DoublyCircular {
         }
 
         Node current = head;
-        Node lastNode = head.pre;
 
         do {
             if (current.data == data) {

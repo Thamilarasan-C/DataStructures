@@ -64,23 +64,20 @@ class SCircularLinkedList {
 
         Node current = head;
         Node prev = null;
-        Node lastNode = null;
+        Node temp = null;
+        if (head.data == data) {
+            temp = head;
+            while (temp.next != head) {
+                temp = temp.next;
+            }
+            temp.next = current.next;
+            head = head.next;
+            return;
+        }
 
         do {
             if (current.data == data) {
-                if (prev != null) {
-                    prev.next = current.next;
-                    if (current == lastNode) {
-                        lastNode = prev;
-                    }
-                } else {
-                    lastNode = head;
-                    while (lastNode.next != head) {
-                        lastNode = lastNode.next;
-                    }
-                    lastNode.next = current.next;
-                    head = head.next;
-                }
+                prev.next = current.next;
                 return;
             }
             prev = current;
