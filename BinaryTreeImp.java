@@ -14,7 +14,19 @@ class Node {
     }
 }
 
-class BT {
+class BST {
+    public Node insert(Node node, int data) {
+        if (node == null)
+            return new Node(data);
+        else {
+            if (data < node.data)
+                node.left = insert(node.left, data);
+            else if (data > node.data)
+                node.right = insert(node.right, data);
+        }
+        return node;
+    }
+
     public void inOrder(Node root) {
         if (root == null)
             return;
@@ -45,6 +57,9 @@ class BT {
         List<Integer> bfs = new ArrayList<>();
         while (!q1.isEmpty()) {
             Node poppedNode = q1.remove();
+            if (poppedNode.left != null)
+                q1.add(poppedNode.left);
+
             if (poppedNode.right != null)
                 q1.add(poppedNode.right);
             bfs.add(poppedNode.data);
@@ -52,28 +67,15 @@ class BT {
         return bfs;
     }
 
-    // public void bfss(Node root){
-    // BFS1()
-    // }
-    // public List<Integer> BFS1(Queue<Node> q1,Node root,List<Integer> list){
-    // if(q1.isEmpty())
-    // return list;
-    // if (root.left != null)
-    // q1.add(root.left);
-    // if(root.right != null)
-    // q1.add(root.right);
-    // list.add(root.data);
-    // return list;
-    // }
-    // public List<Integer> inOrder1(Node root, List<Integer> list) {
-    // if (root == null)
-    // return list;
-    // List<Integer> l1 = inOrder1(root.left, list);
-    // list.addAll(l1);
-    // List<Integer> l2 = inOrder1(root.right, list);
-    // list.addAll(l2);
-    // return list;
-    // }
+    public Node search(Node root, int data) {
+        if (root == null || root.data == data) {
+            return root;
+        }
+        if (data < root.data) {
+            return search(root.left, data);
+        }
+        return search(root.right, data);
+    }
 
 }
 
@@ -81,16 +83,39 @@ public class BinaryTreeImp {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         Node root = new Node(0);
-        System.out.println(root.data);
-        root.left = new Node(1);
-        root.right = new Node(2);
-        root.left.left = new Node(3);
-        root.right.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.right = new Node(6);
-        BT b1 = new BT();
-        b1.inOrder(root);
-        System.out.println(b1.BFS(root));
-        // System.out.println(b1.inOrder1(root, new ArrayList<Integer>()));
+        BST b1 = new BST();
+
+        while (true) {
+            System.out.println(
+                    "Enter Option\n1.Insert   2.bfs  3.Inorder  4.Search");
+            System.out.print("Input : ");
+            int a = sc.nextInt();
+            switch (a) {
+                case 1: {
+                    System.out.println("Enter data");
+                    int data = sc.nextInt();
+                    b1.insert(root, data);
+                    break;
+                }
+                case 2: {
+                    System.out.println("BFS traversal");
+                    System.out.println(b1.BFS(root));
+                    break;
+                }
+                case 3:
+                    System.out.println("Inorder traversal");
+                    b1.inOrder(root);
+                    break;
+                case 4:
+                    System.out.println("Enter Node to find");
+                    int num = sc.nextInt();
+                    Node node = b1.search(root, num);
+                    if (node != null)
+                        System.out.println("Node is present in the tree");
+                    else
+                        System.out.println("No such node present in the tree");
+            }
+        }
     }
+
 }
