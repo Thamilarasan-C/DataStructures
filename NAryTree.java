@@ -14,18 +14,18 @@ public class NAryTree {
 
     public void insert(Node root, int parentdata, int data) {
         Node newNode = new Node(data);
+        if (root == null) {
+            root = newNode;
+            return;
+        }
         Node parentNode = findNode(root, parentdata);
         if (parentNode != null) {
-            System.out.println("in this");
-
             parentNode.children.add(newNode);
         } else
             System.out.println("No such node present in this tree");
     }
 
     public Node findNode(Node current, int data) {
-        // System.out.println(current.data);
-
         if (current.data == data)
             return current;
         for (int i = 0; i < current.children.size(); i++) {
@@ -81,13 +81,8 @@ public class NAryTree {
             if (i != n)
                 child.children.get(n).children.add(child.children.get(i));
         }
-        System.out.println("**");
-        for (Node ch : child.children.get(n).children) {
-            System.out.println(ch.data + " ");
-        }
         if (parentNode == null) {
             root = child.children.get(n);
-            dfs(root);
             return root;
         }
         parentNode.children.add(child.children.get(n));
