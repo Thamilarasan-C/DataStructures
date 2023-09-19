@@ -49,52 +49,6 @@ public class NAryTree {
         return null;
     }
 
-    public void delete1(Node parentNode, Node child, Node root) {
-        if (child.children.size() == 0) {
-            if (parentNode == null) {
-                root = null;
-                return;
-            }
-            parentNode.children.remove(child);
-            return;
-        }
-        if (child.children.size() == 1) {
-            if (parentNode == null) {
-                root = child.children.get(0);
-                return;
-            }
-            parentNode.children.add(child.children.get(0));
-            parentNode.children.remove(child);
-            return;
-        }
-        System.out.print("The children of the node to be deleted are : ");
-        for (Node child1 : child.children)
-            System.out.print(child1.data + " ");
-        System.out.println();
-        System.out.println("Select the index of the node to replace the deleted node");
-        int n = sc.nextInt();
-        while (n < 0 || n >= child.children.size()) {
-            System.out.println("Enter valid index number");
-            n = sc.nextInt();
-        }
-        for (int i = 0; i < child.children.size(); i++) {
-            if (i != n)
-                child.children.get(n).children.add(child.children.get(i));
-        }
-        System.out.println("**");
-        for (Node ch : child.children.get(n).children) {
-            System.out.println(ch.data + " ");
-        }
-        if (parentNode == null) {
-            root = child.children.get(n);
-            dfs(root);
-            return;
-        }
-        parentNode.children.add(child.children.get(n));
-        parentNode.children.remove(child);
-
-    }
-
     public Node delete(Node parentNode, Node child, Node root) {
         if (child.children.size() == 0) {
             if (parentNode == null) {
