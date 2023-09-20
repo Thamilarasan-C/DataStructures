@@ -8,7 +8,7 @@ public class BinarySearch {
         for (int i = 0; i < 10; i++) {
             System.out.println("Enter the element to search");
             int ele = sc.nextInt();
-            System.out.println(binarySearch(list, ele, 0, list.size()));
+            System.out.println(binarySearch(list, ele, 0, list.size() - 1));
         }
     }
 
