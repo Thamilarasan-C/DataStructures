@@ -146,7 +146,7 @@ public class NAryHeight {
             return -1;
         }
 
-        int maxHeight = 0;
+        int maxHeight = -1;
         for (Node child : root.children) {
             int childHeight = findHeight(child);
             maxHeight = Math.max(maxHeight, childHeight);

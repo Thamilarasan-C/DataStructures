@@ -99,7 +99,6 @@ public class Graph {
                     System.out.println("DFS traversal");
                     g1.dfs(arr[index]);
                     break;
-
                 }
             }
         }

@@ -8,6 +8,7 @@ public class QuickSort {
         int s = low;
         int e = high;
         int m = s + (e - s) / 2;
+        System.out.println("Middle of " + s + " and " + e + " = " + m);
         int pivot = arr[m];
 
         while (s <= e) {
@@ -17,6 +18,8 @@ public class QuickSort {
             while (arr[e] > pivot) {
                 e--;
             }
+            System.out.println("Start : " + s);
+            System.out.println("End : " + e);
             if (s <= e) {
                 int temp = arr[s];
                 arr[s] = arr[e];
@@ -24,8 +27,6 @@ public class QuickSort {
                 s++;
                 e--;
             }
-            // System.out.println("Start : "+s);
-            // System.out.println("End : "+e);
         }
         quickSort(arr, low, e);
         quickSort(arr, s, high);

@@ -20,7 +20,7 @@ public class BubbleSort {
             if (!swap)
                 break;
         }
-        System.out.println("Count : " + counter);
+        System.out.println("Bubble Sort Count : " + counter);
     }
 
     public static void cockTailSort(int arr[]) {
@@ -60,7 +60,7 @@ public class BubbleSort {
             if (!swap)
                 break;
         }
-        System.out.println("count : " + counter);
+        System.out.println("CocktailSort count : " + counter);
     }
 
     public static void main(String args[]) {
